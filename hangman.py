@@ -9,3 +9,11 @@ def get_word(wordfile="/usr/share/dict/words"):
                 good_words.append(i)
     return random.choice(good_words)
 
+def mask_word(secret_word,guesses):
+    op=[]
+    for i in secret_word:
+        if i in guesses:
+            op.append(i)
+        else:
+            op.append("-")
+    return "".join(op)
