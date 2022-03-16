@@ -8,3 +8,4 @@ def get_word(wordfile="/usr/share/dict/words"):
             if i.isalpha() and i.islower() and len(i) >=5:
                 good_words.append(i)
     return random.choice(good_words)
+
