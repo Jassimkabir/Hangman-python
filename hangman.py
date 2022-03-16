@@ -17,3 +17,4 @@ def mask_word(secret_word,guesses):
         else:
             op.append("-")
     return "".join(op)
+
