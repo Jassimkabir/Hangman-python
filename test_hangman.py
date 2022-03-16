@@ -72,3 +72,44 @@ def test_create_status_normal():
     Remaining turns : 7
     """
 
+def test_game_correct_guess():
+    secret_word = "hospital"
+    guesses = []
+    remaining_turns = 8
+    guess = "a"
+    remaining_turns, repeat, finished = hangman.game(secret_word, guesses, guess, remaining_turns)
+    assert guesses == ["a"]
+    assert remaining_turns == 8
+    assert repeat == False
+    assert finished == False
+    
+def test_game_correct_repeat():
+    secret_word = "hospital"
+    guesses = ["a"]
+    remaining_turns = 8
+    guess = "a"
+    remaining_turns, repeat, finished = hangman.game(secret_word, guesses, guess, remaining_turns)
+    assert guesses == ["a"]
+    assert remaining_turns == 8
+    assert repeat == True
+    assert finished == False
+
+def test_game_correct_wrong():
+    secret_word = "hospital"
+    guesses = ["a"]
+    remaining_turns = 8
+    guess = "x"
+    remaining_turns, repeat, finished = hangman.game(secret_word, guesses, guess, remaining_turns)
+    assert guesses == ["a", "x"]
+    assert remaining_turns == 7
+    assert repeat == False
+    assert finished == False
+
+def test_game_correct_complete():
+    secret_word = "hospital"
+    guesses = ["h", "o", "s", "p", "i","t","a","l"]
+    remaining_turns = 8
+    guess = "a"
+    remaining_turns, repeat, finished = hangman.game(secret_word, guesses, guess, remaining_turns)
+    assert finished == True
+
